@@ -1,13 +1,11 @@
 package pro.sky.skypro_mintous_cart.service;
 
-import pro.sky.skypro_mintous_cart.model.Cart;
-import pro.sky.skypro_mintous_cart.model.Item;
-
-import java.util.LinkedList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface CartService {
-    List<Item> items = new LinkedList<>();
-    Cart add (int itemID);
-    Cart get (int itemID);
+    Map<Integer, Integer> items = new LinkedHashMap<>();
+    List<Integer> add (List<Integer> ids);
+    Map<Integer, Integer> get();
 }
