@@ -1,24 +1,25 @@
 package pro.sky.skypro_mintous_cart.service;
 
-import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Service;
 import pro.sky.skypro_mintous_cart.model.Cart;
-import pro.sky.skypro_mintous_cart.model.Item;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
-public abstract class CartServiceImpl implements CartService {
-    private final List<Item> items = new LinkedList<>();
+@Service
+public class CartServiceImpl implements CartService {
 
-    public Cart add (int itemID) {
-        Item newItem = new Item(itemID);
-        items.add(newItem);
-        return (Cart) items;
+    private final Cart cart;
+
+    public CartServiceImpl(Cart cart) {
+        this.cart = cart;
     }
 
-    public Cart get() {
-        return (Cart) items.iterator();
+    public List<Integer> add(List<Integer> ids) {
+        return cart.add(ids);
+    }
+
+    public Map<Integer, Integer> get() {
+        return cart.get();
     }
 }
